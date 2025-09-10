@@ -9,9 +9,11 @@ namespace emakefun {
         if (!targets || targets.length === 0 || timeout_ms < 0) {
             throw "Error: 'multiFindUtil' function, invalid parameters.";
         }
-        const byteTargets = targets.map(t => Buffer.fromUTF8(t));
-        // const offsets = new Array(byteTargets.length).fill(0);
-        let offsets: number[] = Array.from({ length: byteTargets.length }, () => 0);
+        const byte_targets = targets.map(t => Buffer.fromUTF8(t));
+        let offsets: number[] = [];
+        for (let i = 0; i < byte_targets.length; i++) {
+            offsets.push(0);
+        }
         const end_time = input.runningTime() + timeout_ms;
         do {
             const data = serial.readBuffer(1);
@@ -20,8 +22,8 @@ namespace emakefun {
                 continue;
             }
             const byte = data[0];
-            for (let i = 0; i < byteTargets.length; i++) {
-                const target = byteTargets[i];
+            for (let i = 0; i < byte_targets.length; i++) {
+                const target = byte_targets[i];
                 let offset = offsets[i];
                 if (byte === target[offset]) {
                     offset++;
