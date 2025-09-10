@@ -240,14 +240,14 @@ namespace emakefun {
         }
 
         /**
-         * Set mqtt user properties.
+         * Set MQTT user properties.
          * @param scheme Mqtt connection scheme.
          * @param client_id Mqtt client ID.
          * @param username Username.
          * @param password Password.
          * @param path Resource path.
          */
-        //% block="$this mqtt set user properties: connection scheme $scheme client ID $client_id username $username password $password resource path $path"
+        //% block="$this MQTT set user properties: connection scheme $scheme client ID $client_id username $username password $password resource path $path"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
@@ -261,17 +261,17 @@ namespace emakefun {
         ): void {
             const command = `AT+MQTTUSERCFG=0,${scheme},"${client_id}","${username}","${password}",0,0,"${path}"`;
             if (!this.writeCommand(command, "\r\nOK\r\n", 500)) {
-                throw "Error: mqtt configuration user properties failed.";
+                throw "Error: MQTT configuration user properties failed.";
             }
         }
 
         /**
-         * Connect to mqtt server.
+         * Connect to MQTT server.
          * @param host Server host.
          * @param port Server port. 
-         * @param reconnect Whether to automatically reconnect, true: mqtt will automatically reconnect, false: mqtt will not automatically reconnect.
+         * @param reconnect Whether to automatically reconnect, true: MQTT will automatically reconnect, false: MQTT will not automatically reconnect.
          */
-        //% block="$this mqtt to connect server: host $host port $port reconnect $reconnect timeout $timeout_ms ms"
+        //% block="$this MQTT to connect server: host $host port $port reconnect $reconnect timeout $timeout_ms ms"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
@@ -284,19 +284,19 @@ namespace emakefun {
         mqttConnect(host: string, port: number, reconnect: boolean): void {
             const command = `AT+MQTTCONN=0,"${host}",${port},${reconnect ? 1 : 0}`;
             if (!this.writeCommand(command, "\r\nOK\r\n", 10000)) {
-                throw "Error: mqtt connection failed.";
+                throw "Error: MQTT connection failed.";
             }
         }
 
         /**
-         * Publish mqtt messages.
+         * Publish MQTT messages.
          * @param topic Mqtt topic.
          * @param data Mqtt string message data.
          * @param qos QoS level.
-         * @param retain Whether to keep the message, true: keep, false: not keep.
+         * @param retain Whether to keep the message.
          * @param timeout_ms Timeout for waiting for response (milliseconds).
          */
-        //% block="$this mqtt publish messages $data to topic $topic, QoS $qos retain $retain timeout %timeout_ms ms"
+        //% block="$this MQTT publish messages $data to topic $topic, QoS $qos retain $retain timeout %timeout_ms ms"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
@@ -311,21 +311,21 @@ namespace emakefun {
             const data_bytes = Buffer.fromUTF8(data);
             const command = `AT+MQTTPUBRAW=0,"${topic}",${data_bytes.length},${qos},${retain ? 1 : 0}`;
             if (!this.writeCommand(command, "\r\nOK\r\n\r\n>", 500)) {
-                throw "Error: mqtt publish content failed.";
+                throw "Error: MQTT publish content failed.";
             }
             const targets = ["+MQTTPUB:OK", "+MQTTPUB:FAIL"];
             serial.writeBuffer(data_bytes);
             if (emakefun.multiFindUtil(targets, timeout_ms) !== 0) {
-                throw "Error: mqtt publish content failed.";
+                throw "Error: MQTT publish content failed.";
             }
         }
 
         /**
-         * Subscribe to mqtt topic.
+         * Subscribe to MQTT topic.
          * @param topic Mqtt topic.
          * @param qos QoS level.
          */
-        //% block="$this mqtt subscribe topic $topic, QoS $qos"
+        //% block="$this MQTT subscribe topic $topic, QoS $qos"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
@@ -336,15 +336,15 @@ namespace emakefun {
         mqttSubscribe(topic: string, qos: number): void {
             const command = `AT+MQTTSUB=0,"${topic}",${qos}`;
             if (!this.writeCommand(command, "\r\nOK\r\n", 500)) {
-                throw "Error: mqtt subscription failed.";
+                throw "Error: MQTT subscription failed.";
             }
         }
 
         /**
-         * Unsubscribe from mqtt topic.
+         * Unsubscribe from MQTT topic.
          * @param topic Mqtt topic.
          */
-        //% block="$this mqtt unsubscribe topic $topic"
+        //% block="$this MQTT unsubscribe topic $topic"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
@@ -352,31 +352,31 @@ namespace emakefun {
         mqttUnsubscribe(topic: string): void {
             const command = `AT+MQTTUNSUB=0,"${topic}"`;
             if (!this.writeCommand(command, "\r\nOK\r\n", 500)) {
-                throw "Error: mqtt unsubscription failed.";
+                throw "Error: MQTT unsubscription failed.";
             }
 
         }
 
         /**
-         * Disconnect mqtt connection.
+         * Disconnect MQTT connection.
          */
-        //% block="$this mqtt disconnect connection"
+        //% block="$this MQTT disconnect connection"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
         //% weight=40
         mqttDisconnect(): void {
             if (!this.writeCommand("AT+MQTTCLEAN=0", "\r\nOK\r\n", 500)) {
-                throw "Error: mqtt disconnect failed.";
+                throw "Error: MQTT disconnect failed.";
             }
         }
 
         /**
-         * Receive mqtt messages.
+         * Receive MQTT messages.
          * @param timeout_ms Timeout for waiting for response (milliseconds).
          * @returns Return an object containing topic and message string. If failed, topic is empty and message is empty string.
          */
-        //% block="$this mqtt receive messages, timeout $timeout_ms"
+        //% block="$this MQTT receive messages, timeout $timeout_ms"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager

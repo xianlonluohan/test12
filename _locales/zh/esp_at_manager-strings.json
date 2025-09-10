@@ -18,7 +18,7 @@
     "emakefun.EspAtManager.getApInfo|block": "%this 获取WiFi的AP信息",
     "emakefun.EspAtManager.mqttUserConfig|block": "%this MQTT设置用户属性， 连接方案 %scheme 客户端ID %client_id 用户名 %username 密码 %password 资源路径 %path",
     "emakefun.EspAtManager.mqttConnect|block": "%this MQTT连接服务器， 主机 %host 端口 %port 重连 %reconnect",
-    "emakefun.EspAtManager.mqttPublish|block": "%this MQTT发布消息 %data 到主题 %topic， QoS %qos 保留 %retain 超时 %timeout_ms 毫秒",
+    "emakefun.EspAtManager.mqttPublish|block": "%this MQTT发布消息 %data 到主题 %topic  QoS %qos 保留 %retain 超时 %timeout_ms 毫秒",
     "emakefun.EspAtManager.mqttSubscribe|block": "%this MQTT订阅 %topic， QoS %qos",
     "emakefun.EspAtManager.mqttUnsubscribe|block": "%this MQTT取消订阅主题 %topic",
     "emakefun.EspAtManager.mqttDisconnect|block": "%this MQTT断开连接",
