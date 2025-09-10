@@ -1,7 +1,7 @@
 {
-    "name": "five_line_tracker_v3",
+    "name": "esp_at_manager",
     "version": "1.0.0",
-    "description": "Extension for Emakefun Five Line Tracker V3",
+    "description": "Extension for Emakefun ESP-AT Manager",
     "license": "MIT",
     "dependencies": {
         "core": "*",
@@ -12,8 +12,9 @@
         "README.md",
         "main.blocks",
         "main.ts",
-        "_locales/zh/five_line_tracker_v3-jsdoc-strings.json",
-        "_locales/zh/five_line_tracker_v3-strings.json"
+        "esp_at_stream_util.ts",
+        "_locales/zh/esp_at_manager-jsdoc-strings.json",
+        "_locales/zh/esp_at_manager-strings.json"
     ],
     "testFiles": [
         "test.ts"
