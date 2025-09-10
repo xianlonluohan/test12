@@ -1,7 +1,7 @@
 //%block="Emakefun"
 namespace emakefun {
 
-    enum ConnectionScheme {
+    export enum ConnectionScheme {
         //% block="TCP"
         kMqttOverTcp = 1,
         //% block="TLS (not verifying certificates)"
