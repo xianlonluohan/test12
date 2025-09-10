@@ -2,6 +2,7 @@
     "emakefun.createEspAtManager": "创建新的ESP-AT模块实例",
     "emakefun.createEspAtManager|param|tx_pin": "TX引脚",
     "emakefun.createEspAtManager|param|rx_pin": "RX引脚",
+    "emakefun.ConnectionScheme": "MQTT连接方案",
     "emakefun.createEspAtManager|param|baud_rate": "波特率",
     "emakefun.EspAtManager.restart": "重启ESP-AT模块",
     "emakefun.EspAtManager.restart|param|timeout_ms": "等待响应的超时时间（毫秒）",
