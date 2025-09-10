@@ -10,6 +10,7 @@ namespace emakefun {
             throw "Error: 'multiFindUtil' function, invalid parameters.";
         }
         const byte_targets = targets.map(t => Buffer.fromUTF8(t));
+        // let offsets: number[] = [];
         let offsets: number[] = [];
         for (let i = 0; i < byte_targets.length; i++) {
             offsets.push(0);
