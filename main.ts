@@ -1,6 +1,9 @@
 //%block="Emakefun"
 namespace emakefun {
 
+    /**
+     * MQTT connection scheme options.
+     */
     export enum ConnectionScheme {
         //% block="TCP"
         kMqttOverTcp = 1,
