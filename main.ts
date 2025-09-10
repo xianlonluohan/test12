@@ -290,13 +290,13 @@ namespace emakefun {
 
         /**
          * Publish MQTT messages.
-         * @param topic Mqtt topic.
-         * @param data Mqtt string message data.
+         * @param topic MQTT topic.
+         * @param data MQTT string message data.
          * @param qos QoS level.
          * @param retain Whether to keep the message.
          * @param timeout_ms Timeout for waiting for response (milliseconds).
          */
-        //% block="$this MQTT publish messages $data to topic $topic, QoS $qos retain $retain timeout %timeout_ms ms"
+        //% block="$this MQTT publish messages $data to topic $topic QoS $qos retain $retain timeout %timeout_ms ms"
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
