@@ -198,7 +198,7 @@ namespace emakefun {
             if (!this.writeCommand("AT+CIPSTAMAC?", '+CIPSTAMAC:"', 500)) {
                 return null;
             }
-            const mac = serial.readUntil('"', 500);
+            const mac = serial.readUntil('"');
             if (emakefun.singleFindUtil("\r\nOK\r\n", 100)) {
                 return mac;
             }
