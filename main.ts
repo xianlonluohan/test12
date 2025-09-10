@@ -275,6 +275,8 @@ namespace emakefun {
         //% subcategory="EspAtManager"
         //% group="MQTT"
         //% this.defl=esp_at_manager
+        //% scheme.shadow="enumval"
+        //% scheme.defl=ConnectionScheme.kMqttOverTcp
         //% port.min=1
         //% port.max=65535
         //% reconnect.defl=true
