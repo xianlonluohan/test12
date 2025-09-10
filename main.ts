@@ -46,6 +46,7 @@ namespace emakefun {
         rx_pin: SerialPin,
         baud_rate: BaudRate
     ): EspAtManager {
+        basic.showString("1!")
         return new EspAtManager(tx_pin, rx_pin, baud_rate);
     }
 
