@@ -111,13 +111,15 @@ namespace emakefun {
             do {
                 if (this.writeCommand("AT+RST", "\r\nOK\r\n", 100) && emakefun.singleFindUtil("\r\nready\r\n", 1000)) {
                     if (!this.writeCommand("AT", "\r\nOK\r\n", 100)) {
-                        throw "Error: WiFi connection failed.";
+                        // throw "Error: WiFi connection failed.";
+                        basic.showString("1!")
                     }
                 } else {
                     this.cancelSend();
                 }
             } while (input.runningTime() < end_time);
-            throw "Error: module restart failed.";
+            // throw "Error: module restart failed.";
+            basic.showString("3!")
         }
 
         /**
@@ -134,7 +136,8 @@ namespace emakefun {
             if (!emakefun.singleFindUtil("\r\nSEND Canceled\r\n", 100)) {
                 serial.writeString("\r\n");
                 serial.readString();
-                throw "Error: module cancel send failed.";
+                // throw "Error: module cancel send failed.";
+                basic.showString("2!")
             }
         }
 
