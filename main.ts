@@ -46,7 +46,7 @@ namespace emakefun {
         rx_pin: SerialPin,
         baud_rate: BaudRate
     ): EspAtManager {
-        basic.showString("1!")
+        basic.showString("1!");
         return new EspAtManager(tx_pin, rx_pin, baud_rate);
     }
 
@@ -79,21 +79,21 @@ namespace emakefun {
         constructor(tx_pin: SerialPin, rx_pin: SerialPin, baud_rate: BaudRate) {
             serial.redirect(tx_pin, rx_pin, baud_rate);
 
-            this.restart(2000);
+            // this.restart(2000);
 
-            const at_commands = [
-                "ATE0",
-                "AT+CWINIT=1",
-                "AT+CWMODE=1",
-                "AT+CIPDINFO=1",
-                "AT+CWAUTOCONN=0",
-                "AT+CWDHCP=1,1"
-            ];
-            for (let command of at_commands) {
-                if (!this.writeCommand(command, "\r\nOK\r\n", 500)) {
-                    throw "Error: module init failed.";
-                }
-            }
+            // const at_commands = [
+            //     "ATE0",
+            //     "AT+CWINIT=1",
+            //     "AT+CWMODE=1",
+            //     "AT+CIPDINFO=1",
+            //     "AT+CWAUTOCONN=0",
+            //     "AT+CWDHCP=1,1"
+            // ];
+            // for (let command of at_commands) {
+            //     if (!this.writeCommand(command, "\r\nOK\r\n", 500)) {
+            //         throw "Error: module init failed.";
+            //     }
+            // }
         }
 
         /**
