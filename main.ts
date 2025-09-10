@@ -250,7 +250,7 @@ namespace emakefun {
         //% this.defl=esp_at_manager
         //% weight=70
         mqttUserConfig(
-            scheme: ConnectionScheme,
+            scheme: ConnectionScheme = ConnectionScheme.kMqttOverTcp,
             client_id: string,
             username: string,
             password: string,
